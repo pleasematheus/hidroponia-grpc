@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package bancada;
+
+// Serviços
+service BancadaService {
+  rpc EnviarDados(Vazio) returns (DadoSensor);
+}
+
+// Mensagens
+message Vazio {};
+
+message DadoSensor {
+  string bancada_id = 1;
+  double temperatura = 2;
+  double umidade = 3;
+  double condutividade = 4;
+  string timestamp = 5;
+}

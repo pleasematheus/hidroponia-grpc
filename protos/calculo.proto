@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package calculo;
+
+// Serviços
+service CalculoService {
+  rpc CalcularMetricas (ListaDados) returns (ResultadoMetricas);
+}
+
+
+// Mensagens
+message DadoSensor {
+  string bancada_id = 1;
+  double temperatura = 2;
+  double umidade = 3;
+  double condutividade = 4;
+  string timestamp = 5;
+}
+
+message ListaDados {
+  repeated DadoSensor dados = 1;
+}
+
+message Metricas {
+  string bancada_id = 1;
+  double media_temperatura = 2;
+  double mediana_temperatura = 3;
+  double media_umidade = 4;
+  double mediana_umidade = 5;
+  double media_condutividade = 6;
+  double mediana_condutividade = 7;
+}
+
+message ResultadoMetricas {
+  repeated Metricas metricas = 1;
+}
